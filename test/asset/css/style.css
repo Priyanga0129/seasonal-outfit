@@ -181,13 +181,16 @@ main {
   .carousel-wrapper > .d-flex {
     flex-direction: row;
   }
+  .outfit-carousel-static {
+  margin-top: 5rem;
+  }
 
   .carousel-wrapper .position-relative {
     width: 60%;
   }
 
   .carousel-product {
-   width: 40%;
+    width: 40%;
     max-height: 500px;
   }
 
@@ -379,7 +382,7 @@ main {
 .static-image.active {
   height: 500;
 }
-
+@media (min-width: 992px) and (max-width: 768px){
 .static-image.size-1 {
   transform: scale(0.7) translateX(-300px);
   z-index: 0;
@@ -398,6 +401,7 @@ main {
 .static-image.active {
   transform: scale(1.1);
   z-index: 1;
+}
 }
 
 /* Make it responsive */
