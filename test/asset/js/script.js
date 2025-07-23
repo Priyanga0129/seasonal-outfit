@@ -56,6 +56,63 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  let cartCount = 0;
+
+  const cartCounter = document.querySelector(".cart-count");
+
+  // All "+ Add to cart" buttons
+  const addToCartButtons = document.querySelectorAll(".add-cart-btn");
+
+  // All plus icons in Latest Arrivals or Suggestions
+  const plusButtons = document.querySelectorAll(".fa-plus");
+
+  function updateCartCount() {
+    cartCount++;
+    cartCounter.textContent = cartCount;
+    cartCounter.classList.add("d-inline");
+  }
+
+  // Bind to button elements
+  addToCartButtons.forEach((btn) => {
+    btn.addEventListener("click", updateCartCount);
+  });
+
+  // Bind to icon buttons
+  plusButtons.forEach((icon) => {
+    icon.closest("button").addEventListener("click", updateCartCount);
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  let wishlistCount = 0;
+  const wishlistCounter = document.querySelector(".wishlist-count");
+
+  // All heart icons (wishlist buttons)
+  const heartIcons = document.querySelectorAll(".fa-heart, .fa-regular.fa-heart");
+
+  function updateWishlistCount(event) {
+    wishlistCount++;
+    wishlistCounter.textContent = wishlistCount;
+    wishlistCounter.classList.add("d-inline");
+
+    // Optional: visual feedback
+    const icon = event.currentTarget.querySelector("i");
+    if (icon) {
+      icon.classList.remove("fa-regular");
+      icon.classList.add("fa-solid");
+    }
+  }
+
+  // Attach listener to parent button of icons
+  heartIcons.forEach((icon) => {
+    const button = icon.closest("button");
+    if (button) {
+      button.addEventListener("click", updateWishlistCount);
+    }
+  });
+});
 
 
 
@@ -82,11 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (positionFromEnd === 0) {
         clone.classList.add("active");
-      } else if (positionFromEnd === 1) {
+      } else if (positionFromEnd === 3) {
         clone.classList.add("size-3");
       } else if (positionFromEnd === 2) {
         clone.classList.add("size-2");
-      } else if (positionFromEnd === 3) {
+      } else if (positionFromEnd === 1) {
         clone.classList.add("size-1");
       }
 
